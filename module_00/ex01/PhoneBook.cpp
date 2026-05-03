@@ -44,7 +44,7 @@ void PhoneBook::add_contact()
             continue;
         }
         person.set_first_name(input);
-        break;;
+        break;
     }
 
     while (1)
@@ -132,7 +132,7 @@ void PhoneBook::search_contact()
 
     std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
-	std::cout << "+------------+------------+------------+----+" << std::endl;
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
 
     for (int i = 0; i < size; i++)
     {
@@ -148,12 +148,11 @@ void PhoneBook::search_contact()
         << std::setw(10) << contacts[i].get_last_name() << "|"
         << std::setw(10) << contacts[i].get_nickname() << "|"
         << std::endl;
-        std::cout << "+------------+------------+------------+----+" << std::endl;
-
+        std::cout << "+----------+----------+----------+----------+" << std::endl;
     }
     std::cout << YELLOW << "Enter an index from the table to get information >>> " << RESET;
     std::getline(std::cin, input);
-    if (input.empty())
+    if (input.empty() || !is_number(input))
     {
         std::cout << RED << "Invalid input!" << RESET << std::endl;
         return;
