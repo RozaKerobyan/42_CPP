@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
                 out_file.write(part.c_str(), part.length());
                 out_file.write(s2.c_str(), s2.length());
                 idx = pos + s1.length();
-                pos = text.find(s1, pos + 1);
+                pos = text.find(s1, idx);
             }
             std::string part = text.substr(idx);
             out_file.write(part.c_str(), part.length());
