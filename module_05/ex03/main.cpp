@@ -15,13 +15,12 @@ int main()
         AForm* presidential;
         AForm* errorForm;
         robotomy = someRandomIntern.makeForm("robotomy request", "Icha");
-        shrubbbery = someRandomIntern.makeForm("shrubberry creation", "Tapasia");
-        presidential = someRandomIntern.makeForm("presidential pardon", "Takur Sahab");
-        errorForm = someRandomIntern.makeForm("Nani", "error");
-
         delete robotomy;
+        shrubbbery = someRandomIntern.makeForm("shrubberry creation", "Tapasia");
         delete shrubbbery;
+        presidential = someRandomIntern.makeForm("presidential pardon", "Takur Sahab");
         delete presidential;
+        errorForm = someRandomIntern.makeForm("Nani", "error");
         delete errorForm;
     }
     catch(const std::exception& e)
