@@ -1,5 +1,4 @@
-#ifndef DATA_HPP
-#define DATA_HPP
+#pragma once
 
 #include <iostream>
 #include <stdint.h>
@@ -10,5 +9,3 @@ struct Data
     int number;
     std::string name;
 };
-
-#endif
