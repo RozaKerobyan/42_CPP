@@ -1,8 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <stdint.h>
-#include <string>
+#include "Serializer.hpp"
 
 struct Data
 {
