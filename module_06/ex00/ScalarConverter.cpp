@@ -215,21 +215,21 @@ void ScalarConverter::convertFromDouble(const std::string &literal)
 
 void ScalarConverter::convertFromInfNan(const std::string &literal)
 {
-    if (literal == "+inf")
+    if (literal == "+inf" || literal == "+inff")
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: " << "+inff" << std::endl;
         std::cout << "double: " << "+inf" << std::endl;
     }
-    else if (literal == "-inf")
+    else if (literal == "-inf" || literal == "-inff")
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: " << "-inff" << std::endl;
         std::cout << "double: " << "-inf" << std::endl;
     }
-    else if (literal == "nan")
+    else if (literal == "nan" || literal == "nanf")
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
