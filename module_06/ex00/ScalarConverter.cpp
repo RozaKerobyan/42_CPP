@@ -77,7 +77,8 @@ static bool checkDouble(const std::string &literal)
 
 static bool checkInfNan(const std::string &literal)
 {
-    if (literal == "-inf" || literal == "+inf" || literal == "nan")
+    if (literal == "-inf" || literal == "+inf" || literal == "nan"
+        || literal == "-inff" || literal == "+inff" || literal == "nanf")
         return (1);
     else
         return (0);
