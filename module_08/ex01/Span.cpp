@@ -37,11 +37,26 @@ void Span::addNumber(int i)
 
 int Span::shortestSpan() 
 {
-    // here to write logic
+    if (numbers.size() < 2)
+        throw SpanException();
+    
+    std::vector<int> tmp = numbers;
+    std::sort(tmp.begin(), tmp.end());
+
+    int shortest = tmp[1] - tmp[0];
+    for (size_t i = 1; i < tmp.size(); i++)
+    {
+        int span = tmp[i] - tmp[i - 1];
+        if (span < shortest)
+            shortest = span;
+    }
+    return (shortest);
 }
 
 int Span::longestSpan()
 {
+    if (numbers.size() < 2)
+        throw SpanException();
     int max = *std::max_element(numbers.begin(), numbers.end());
     int min = *std::min_element(numbers.begin(), numbers.end());
 

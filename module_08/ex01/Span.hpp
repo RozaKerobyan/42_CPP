@@ -9,9 +9,18 @@ class FullException  : public std::exception
         public:
             const char *what() const throw()
             {
-                return("NOT FOUND ELEMENT!!!");
+                return("Exception: Numbers size is full!!!");
             }
 };
+
+class SpanException  : public std::exception
+{
+        public:
+            const char *what() const throw()
+            {
+                return("Exception: Can't return the longest or shortest span!!!");
+            }
+};  
 
 class Span
 {
