@@ -24,11 +24,3 @@ void print(const T &element)
     std::cout << "index [" << index << "] - " << element << std::endl;
     index++;
 }
-
-/* template <typename T>
-void print(T &element)
-{
-    static size_t index = 0;
-    std::cout << "index [" << index << "] - " << element << std::endl;
-    index++;
-} */
