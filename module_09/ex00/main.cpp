@@ -7,8 +7,16 @@ int main(int argc, char *argv[])
         std::cout << "Error: database file argument is required.\n";
         return (1);
     }
-    BitcoinExchange bitcoin;
-    bitcoin.loadDatabase("data.csv");
-    bitcoin.inputDatabase(argv[1]);
+    try
+    {
+        BitcoinExchange bitcoin;
+
+        bitcoin.loadDatabase("data.csv");
+        bitcoin.inputDatabase(argv[1]);
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
     return (0);
 }
