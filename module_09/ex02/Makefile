@@ -1,4 +1,4 @@
-NAME    = main
+NAME    = PmergeMe
 CPP      = c++
 CPP_FLAGS  = -Wall -Wextra -Werror -std=c++98
 SRCS    = main.cpp PmergeMe.cpp
