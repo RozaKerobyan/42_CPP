@@ -1,6 +1,12 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe() 
+{
+    vectorStraggler = 0;
+    dequeStraggler = 0;
+    hasVectorStraggler = false;
+    hasDequeStraggler = false;
+}
 
 PmergeMe::PmergeMe(const PmergeMe &other)
 {
@@ -33,20 +39,74 @@ bool PmergeMe::checkInputs(const std::string &input)
     return (true);
 }
 
-void PmergeMe::pairCreation(const std::string &input)
+void PmergeMe::pairCreationVector(const std::string &input)
 {
 
     std::stringstream ss(input);
-    std::vector<int> numbers;
     int num;
+
     while (ss >> num)
     {
-        numbers.push_back(num);
+        vector.push_back(num);
     }
-    for (size_t i = 0; i + 1 < numbers.size(); i += 2)
+    for (size_t i = 0; i + 1 < vector.size(); i += 2)
     {
-        int first = numbers[i];
-        int second = numbers[i + 1];
-        std::cout << "(" << first << ", " << second << ")" << std::endl;
+        int first = vector[i];
+        int second = vector[i + 1];
+        
+        if (first < second)
+            vectorPairs.push_back(std::make_pair(second, first));
+        else
+            vectorPairs.push_back(std::make_pair(first, second));
+    }
+    if (vector.size() % 2 != 0)
+    {
+        vectorStraggler = vector.back();
+        hasVectorStraggler = true;
+    }
+}
+
+void PmergeMe::pairCreationDeque(const std::string &input)
+{
+
+    std::stringstream ss(input);
+    int num;
+
+    while (ss >> num)
+    {
+        deque.push_back(num);
+    }
+    for (size_t i = 0; i + 1 < deque.size(); i += 2)
+    {
+        int first = deque[i];
+        int second = deque[i + 1];
+        
+        if (first < second)
+            dequePairs.push_back(std::make_pair(second, first));
+        else
+            dequePairs.push_back(std::make_pair(first, second));
+    }
+    if (deque.size() % 2 != 0)
+    {
+        dequeStraggler = deque.back();
+        hasDequeStraggler = true;
+    }
+}
+
+void PmergeMe::separateVectorPairs()
+{
+    for (size_t i = 0; i < vectorPairs.size(); i++)
+    {
+        vectorGreater.push_back(vectorPairs[i].first);
+        vectorLesser.push_back(vectorPairs[i].second);
+    }
+}
+
+void PmergeMe::separateDequePairs()
+{
+    for (size_t i = 0; i < dequePairs.size(); i++)
+    {
+        dequeGreater.push_back(dequePairs[i].first);
+        deque.push_back(dequePairs[i].second);
     }
 }
