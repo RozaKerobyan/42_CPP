@@ -26,6 +26,7 @@ class PmergeMe
 
         std::vector<int> vectorLesser;
         std::deque<int> dequeLesser;
+
     public:
         PmergeMe();
         PmergeMe(const PmergeMe &other);
@@ -33,8 +34,16 @@ class PmergeMe
         ~PmergeMe();
 
         bool checkInputs(const std::string &input);
+
         void pairCreationVector(const std::string &input);
         void pairCreationDeque(const std::string &input);
+
         void separateVectorPairs();
         void separateDequePairs();
+
+        void sortVectorPairs();
+        void sortDequePairs();
+
+        void insertVectorValue(int value);
+        void insertDequeValue(int value);
 };

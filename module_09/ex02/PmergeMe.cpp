@@ -93,6 +93,30 @@ void PmergeMe::pairCreationDeque(const std::string &input)
     }
 }
 
+void PmergeMe::sortVectorPairs()
+{
+    for (size_t i = 0; i < vectorPairs.size(); i++)
+    {
+        for (size_t j = 0; j + 1 < vectorPairs.size() - i; j++)
+        {
+            if (vectorPairs[j].first > vectorPairs[j + 1].first)
+                std::swap(vectorPairs[j], vectorPairs[j + 1]);
+        }
+    }
+}
+
+void PmergeMe::sortDequePairs()
+{
+    for (size_t i = 0; i < dequePairs.size(); i++)
+    {
+        for (size_t j = 0; j + 1 < dequePairs.size() - i; j++)
+        {
+            if (dequePairs[j].first > dequePairs[j + 1].first)
+                std::swap(dequePairs[j], dequePairs[j + 1]);
+        }
+    }
+}
+
 void PmergeMe::separateVectorPairs()
 {
     for (size_t i = 0; i < vectorPairs.size(); i++)
@@ -107,6 +131,39 @@ void PmergeMe::separateDequePairs()
     for (size_t i = 0; i < dequePairs.size(); i++)
     {
         dequeGreater.push_back(dequePairs[i].first);
-        deque.push_back(dequePairs[i].second);
+        dequeLesser.push_back(dequePairs[i].second);
     }
 }
+
+void PmergeMe::insertVectorValue(int value)
+{
+    size_t left = 0;
+    size_t right = vectorGreater.size();
+
+    while (left < right)
+    {
+        size_t middle = left + (right - left) / 2;
+        if (vectorGreater[middle] < value)
+            left = middle + 1;
+        else
+            right = middle;
+    }
+    vectorGreater.insert(vectorGreater.begin() + left, value);
+}
+
+void PmergeMe::insertDequeValue(int value)
+{
+    size_t left = 0;
+    size_t right = dequeGreater.size();
+
+    while (left < right)
+    {
+        size_t middle = left + (right - left) / 2;
+        if (dequeGreater[middle] < value)
+            left = middle + 1;
+        else
+            right = middle;
+    }
+    dequeGreater.insert(dequeGreater.begin() + left, value);
+}
+
