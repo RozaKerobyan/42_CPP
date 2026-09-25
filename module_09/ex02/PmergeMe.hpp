@@ -4,16 +4,15 @@
 #include <sstream>
 #include <vector>
 #include <deque>
-
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
 
 class PmergeMe
 {
     private:
         std::vector<int> vector;
         std::deque<int> deque;
-
-        std::vector<std::pair<int, int>> vectorPairs;
-        std::deque<std::pair<int, int>> dequePairs;
 
         int vectorStraggler;
         int dequeStraggler;
@@ -26,7 +25,17 @@ class PmergeMe
 
         std::vector<int> vectorLesser;
         std::deque<int> dequeLesser;
+    private:
+        std::vector<int> fordJohnsonVector(const std::vector<int> &input);
+        std::deque<int> fordJohnsonDeque(const std::deque<int> &input);
 
+        void insertVectorValue(std::vector<int> &result, int value, size_t end);
+        void insertDequeValue(std::deque<int> &result, int value, size_t end);
+
+        std::vector<size_t> createJacobsthalOrderVector(size_t size);
+        std::deque<size_t> createJacobsthalOrderDeque(size_t size);
+
+        void reset();
     public:
         PmergeMe();
         PmergeMe(const PmergeMe &other);
@@ -34,16 +43,10 @@ class PmergeMe
         ~PmergeMe();
 
         bool checkInputs(const std::string &input);
-
-        void pairCreationVector(const std::string &input);
-        void pairCreationDeque(const std::string &input);
-
-        void separateVectorPairs();
-        void separateDequePairs();
-
-        void sortVectorPairs();
-        void sortDequePairs();
-
-        void insertVectorValue(int value);
-        void insertDequeValue(int value);
+        bool parseInput(int argc, char **argv);
+        void sortVector();
+        void sortDeque();
+        void sort();
+        const std::vector<int> &getVector() const;
+        const std::deque<int> &getDeque() const;
 };
