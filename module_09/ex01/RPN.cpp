@@ -80,7 +80,7 @@ void RPN::processRPN(const std::string &input)
         }
         else
         {
-            std::cerr << "Error: Invalid token!\n";
+            std::cerr << "Error";
             return ;
         }
     }
